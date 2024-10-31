@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import FoodTracker from './pages/FoodTracker';
@@ -30,6 +31,14 @@ function App() {
   useEffect(() => {
     localStorage.setItem("exercises", JSON.stringify(exercises));
   }, [exercises]);
+
+  const handleLogin = (email, password) => {
+    // Simple login check based on registered userData
+    if (userData && userData.email === email && userData.password === password) {
+      return true;
+    }
+    return false;
+  };
 
   const handleHealthDataSubmit = (data) => {
     setUserData((prevData) => ({ ...prevData, ...data }));
@@ -67,6 +76,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register onRegister={handleRegister} />} />
+        <Route path="/login" element={<Login onLogin={(email, password) => handleLogin(email, password)} />} />
         <Route path="/dashboard" element={<Dashboard onHealthDataSubmit={handleHealthDataSubmit} />} />
         <Route path="/profile" element={<Profile userData={userData} clearUserData={clearUserData} />} />
         <Route path="/food-tracker" element={<FoodTracker addMeal={addMeal} />} />
