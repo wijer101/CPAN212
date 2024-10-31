@@ -32,14 +32,6 @@ function App() {
     localStorage.setItem("exercises", JSON.stringify(exercises));
   }, [exercises]);
 
-  const handleLogin = (email, password) => {
-    // Simple login check based on registered userData
-    if (userData && userData.email === email && userData.password === password) {
-      return true;
-    }
-    return false;
-  };
-
   const handleHealthDataSubmit = (data) => {
     setUserData((prevData) => ({ ...prevData, ...data }));
   };
@@ -73,6 +65,7 @@ function App() {
 
   return (
     <Router>
+      <Navbar userData={userData} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register onRegister={handleRegister} />} />
