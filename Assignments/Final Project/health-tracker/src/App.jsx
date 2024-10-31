@@ -20,6 +20,18 @@ function App() {
   const [meals, setMeals] = useState(initialMeals);
   const [exercises, setExercises] = useState(initialExercises);
 
+  const handleLogin = (email, password) => {
+    // Simple login check based on registered userData
+    if (userData && userData.email === email && userData.password === password) {
+      return true;
+    }
+    return false;
+  };
+  const handleLogout = () => {
+    setUserData(null);
+    localStorage.removeItem("userData");
+  };
+
   useEffect(() => {
     localStorage.setItem("userData", JSON.stringify(userData));
   }, [userData]);
