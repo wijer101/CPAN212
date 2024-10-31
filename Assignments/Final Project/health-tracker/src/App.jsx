@@ -65,7 +65,6 @@ function App() {
 
   return (
     <Router>
-      <Navbar userData={userData} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register onRegister={handleRegister} />} />
