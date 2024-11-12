@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "lab01": "file:",
     "lodash": "^4.17.21"
   }
 }

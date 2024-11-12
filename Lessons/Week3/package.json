@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.0",
+    "lab02": "file:",
     "nodemon": "^3.1.5"
   }
 }
