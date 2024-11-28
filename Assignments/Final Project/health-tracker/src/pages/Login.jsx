@@ -32,7 +32,7 @@ function Login({ setAuthToken }) {
       }
 
       alert(`Welcome back, ${user.username}!`);
-      navigate('/dashboard'); // Redirect to the Dashboard
+      navigate('/profile'); // Redirect to the Profile page
     } catch (err) {
       // Handle login errors
       console.error(err.response?.data?.message || 'Login failed');
