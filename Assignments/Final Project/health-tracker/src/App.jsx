@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -19,18 +19,6 @@ function App() {
   const [userData, setUserData] = useState(initialData);
   const [meals, setMeals] = useState(initialMeals);
   const [exercises, setExercises] = useState(initialExercises);
-
-  const handleLogin = (email, password) => {
-    // Simple login check based on registered userData
-    if (userData && userData.email === email && userData.password === password) {
-      return true;
-    }
-    return false;
-  };
-  const handleLogout = () => {
-    setUserData(null);
-    localStorage.removeItem("userData");
-  };
 
   useEffect(() => {
     localStorage.setItem("userData", JSON.stringify(userData));
@@ -75,17 +63,24 @@ function App() {
     localStorage.removeItem("exercises");
   };
 
+  const isAuthenticated = () => {
+    return !!localStorage.getItem('authToken');
+  };
+  
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register onRegister={handleRegister} />} />
-        <Route path="/login" element={<Login onLogin={(email, password) => handleLogin(email, password)} />} />
+        <Route path="/login" element={<Login userData={userData} />} />
         <Route path="/dashboard" element={<Dashboard onHealthDataSubmit={handleHealthDataSubmit} />} />
         <Route path="/profile" element={<Profile userData={userData} clearUserData={clearUserData} />} />
         <Route path="/food-tracker" element={<FoodTracker addMeal={addMeal} />} />
         <Route path="/nutrition-diary" element={<NutritionDiary meals={meals} userData={userData} clearMeals={clearMeals} />} />
         <Route path="/exercise-tracker" element={<ExerciseTracker addExercise={addExercise} exercises={exercises} clearExercises={clearExercises} />} />
+        <Route path="/dashboard" element={isAuthenticated() ? <Dashboard /> : <Navigate to="/login" />} />
+
       </Routes>
     </Router>
   );
