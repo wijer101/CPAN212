@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import Navbar from '../components/Navbar';
+import React, { useState } from "react";
 
 function ExerciseTracker({ addExercise, exercises, clearExercises }) {
-  const [exerciseType, setExerciseType] = useState('');
-  const [duration, setDuration] = useState('');
-  const [intensity, setIntensity] = useState('Medium');
-  const [caloriesBurned, setCaloriesBurned] = useState('');
+  const [exerciseType, setExerciseType] = useState("");
+  const [duration, setDuration] = useState("");
+  const [intensity, setIntensity] = useState("Medium");
+  const [caloriesBurned, setCaloriesBurned] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,19 +15,19 @@ function ExerciseTracker({ addExercise, exercises, clearExercises }) {
       caloriesBurned: parseFloat(caloriesBurned),
     };
     addExercise(exercise);
-    setExerciseType('');
-    setDuration('');
-    setIntensity('Medium');
-    setCaloriesBurned('');
+    setExerciseType("");
+    setDuration("");
+    setIntensity("Medium");
+    setCaloriesBurned("");
   };
 
   return (
     <div className="container">
-      <Navbar />
       <h1>Exercise Tracker</h1>
-      
+
       <form onSubmit={handleSubmit}>
-        <label>Exercise Type:
+        <label>
+          Exercise Type:
           <input
             type="text"
             value={exerciseType}
@@ -37,7 +36,8 @@ function ExerciseTracker({ addExercise, exercises, clearExercises }) {
           />
         </label>
 
-        <label>Duration (minutes):
+        <label>
+          Duration (minutes):
           <input
             type="number"
             value={duration}
@@ -46,15 +46,20 @@ function ExerciseTracker({ addExercise, exercises, clearExercises }) {
           />
         </label>
 
-        <label>Intensity:
-          <select value={intensity} onChange={(e) => setIntensity(e.target.value)}>
+        <label>
+          Intensity:
+          <select
+            value={intensity}
+            onChange={(e) => setIntensity(e.target.value)}
+          >
             <option value="Low">Low</option>
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </select>
         </label>
 
-        <label>Calories Burned:
+        <label>
+          Calories Burned:
           <input
             type="number"
             value={caloriesBurned}
@@ -72,30 +77,48 @@ function ExerciseTracker({ addExercise, exercises, clearExercises }) {
       ) : (
         <ul>
           {exercises.map((exercise, index) => (
-            <li key={index} style={{ marginBottom: '15px', padding: '10px', border: '1px solid #ddd', borderRadius: '8px' }}>
-              <p><strong>Exercise Type:</strong> {exercise.exerciseType}</p>
-              <p><strong>Duration:</strong> {exercise.duration} minutes</p>
-              <p><strong>Intensity:</strong> {exercise.intensity}</p>
-              <p><strong>Calories Burned:</strong> {exercise.caloriesBurned} kcal</p>
+            <li
+              key={index}
+              style={{
+                marginBottom: "15px",
+                padding: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+              }}
+            >
+              <p>
+                <strong>Exercise Type:</strong> {exercise.exerciseType}
+              </p>
+              <p>
+                <strong>Duration:</strong> {exercise.duration} minutes
+              </p>
+              <p>
+                <strong>Intensity:</strong> {exercise.intensity}
+              </p>
+              <p>
+                <strong>Calories Burned:</strong> {exercise.caloriesBurned} kcal
+              </p>
             </li>
           ))}
         </ul>
       )}
 
-      <button onClick={clearExercises} style={styles.clearButton}>Clear All Exercises</button>
+      <button onClick={clearExercises} style={styles.clearButton}>
+        Clear All Exercises
+      </button>
     </div>
   );
 }
 
 const styles = {
   clearButton: {
-    marginTop: '20px',
-    padding: '10px 20px',
-    backgroundColor: '#d9534f',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
+    marginTop: "20px",
+    padding: "10px 20px",
+    backgroundColor: "#d9534f",
+    color: "white",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
   },
 };
 

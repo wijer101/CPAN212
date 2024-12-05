@@ -14,6 +14,7 @@ import FoodTracker from "./pages/FoodTracker";
 import NutritionDiary from "./pages/NutritionDiary";
 import ExerciseTracker from "./pages/ExerciseTracker";
 import WaterTracker from "./pages/WaterTracker";
+import Navbar from "./components/Navbar"; // Import the Navbar component
 import "./App.css";
 import "./styles.css";
 
@@ -67,6 +68,8 @@ function App() {
   const clearUserData = () => {
     setUserData(null);
     localStorage.removeItem("userData");
+    localStorage.removeItem("authToken");
+    setAuthToken(null); // Log out the user
   };
 
   const clearMeals = () => {
@@ -79,9 +82,10 @@ function App() {
     localStorage.removeItem("exercises");
   };
 
-  // App routes
   return (
     <Router>
+      {/* Add the Navbar with authentication state */}
+      <Navbar isAuthenticated={isAuthenticated()} onLogout={clearUserData} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route

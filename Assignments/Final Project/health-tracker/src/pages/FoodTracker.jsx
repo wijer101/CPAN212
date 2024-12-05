@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function FoodTracker({ addMeal }) {
   const [carbs, setCarbs] = useState(0);
@@ -10,7 +9,7 @@ function FoodTracker({ addMeal }) {
   const navigate = useNavigate();
 
   // Calculate calories based on input
-  const calculateCalories = () => (carbs * 4) + (fats * 9) + (protein * 4);
+  const calculateCalories = () => carbs * 4 + fats * 9 + protein * 4;
 
   const handleSubmit = () => {
     const meal = {
@@ -21,16 +20,16 @@ function FoodTracker({ addMeal }) {
     };
     addMeal(meal);
     // Navigate to Nutrition Diary page
-    navigate('/nutrition-diary');
+    navigate("/nutrition-diary");
   };
 
   return (
     <div className="container">
-      <Navbar />
       <h1>Food Tracker</h1>
-      
+
       <div>
-        <label>Carbohydrates (g):
+        <label>
+          Carbohydrates (g):
           <input
             type="number"
             value={carbs}
@@ -38,7 +37,8 @@ function FoodTracker({ addMeal }) {
           />
         </label>
 
-        <label>Fats (g):
+        <label>
+          Fats (g):
           <input
             type="number"
             value={fats}
@@ -46,7 +46,8 @@ function FoodTracker({ addMeal }) {
           />
         </label>
 
-        <label>Protein (g):
+        <label>
+          Protein (g):
           <input
             type="number"
             value={protein}

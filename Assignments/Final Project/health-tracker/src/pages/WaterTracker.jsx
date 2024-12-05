@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import {
   addWaterIntake,
   getWaterIntake,
@@ -31,7 +30,6 @@ function WaterTracker({ authToken }) {
 
   return (
     <div className="container">
-      <Navbar />
       <h1>Water Tracker</h1>
       <label>
         Amount (ml):
