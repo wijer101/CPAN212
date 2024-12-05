@@ -15,7 +15,9 @@ import NutritionDiary from "./pages/NutritionDiary";
 import ExerciseTracker from "./pages/ExerciseTracker"; // Existing frontend-only tracker
 import ExerciseLog from "./pages/ExerciseLog"; // New backend-integrated tracker
 import WaterTracker from "./pages/WaterTracker";
+import FooterPage from "./pages/FooterPage";
 import Navbar from "./components/Navbar"; // Import the Navbar component
+import Footer from "./components/Footer"; // Import Footer
 import "./App.css";
 import "./styles.css";
 
@@ -172,7 +174,10 @@ function App() {
             )
           }
         />
+        <Route path="/footer-info" element={<FooterPage />} />{" "}
+        {/* New Footer Route */}
       </Routes>
+      <Footer />
     </Router>
   );
 }
