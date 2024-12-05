@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer style={styles.footer}>
       <p style={styles.text}>
-        &copy; {new Date().getFullYear()} MyApp. All rights reserved.
+        &copy; {new Date().getFullYear()} Macros. All rights reserved.
       </p>
       <div style={styles.links}>
         <a href="/privacy-policy" style={styles.link}>
