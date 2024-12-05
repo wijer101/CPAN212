@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 const waterRoutes = require('./routes/water'); // Import water routes
+const exerciseRoutes = require('./routes/exercise'); // Import exercise routes
 
 dotenv.config();
 const app = express();
@@ -18,6 +19,7 @@ connectDB();
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/water', waterRoutes); // Add water intake routes
+app.use('/api/exercise', exerciseRoutes); // Add exercise log routes
 
 // Start server
 const PORT = process.env.PORT || 5000;

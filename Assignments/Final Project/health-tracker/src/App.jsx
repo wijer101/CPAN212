@@ -12,7 +12,8 @@ import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import FoodTracker from "./pages/FoodTracker";
 import NutritionDiary from "./pages/NutritionDiary";
-import ExerciseTracker from "./pages/ExerciseTracker";
+import ExerciseTracker from "./pages/ExerciseTracker"; // Existing frontend-only tracker
+import ExerciseLog from "./pages/ExerciseLog"; // New backend-integrated tracker
 import WaterTracker from "./pages/WaterTracker";
 import Navbar from "./components/Navbar"; // Import the Navbar component
 import "./App.css";
@@ -146,6 +147,16 @@ function App() {
                 exercises={exercises}
                 clearExercises={clearExercises}
               />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/exercise-log"
+          element={
+            isAuthenticated() ? (
+              <ExerciseLog authToken={authToken} />
             ) : (
               <Navigate to="/login" />
             )
