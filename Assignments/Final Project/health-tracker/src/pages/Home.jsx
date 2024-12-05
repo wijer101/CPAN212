@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="container">
-      <h1>Welcome to Health & Fitness Tracker</h1>
+      <h1>Welcome to Macros!</h1>
       <p>
         Your go-to app for tracking diet, exercise, and reaching your fitness
         goals.
