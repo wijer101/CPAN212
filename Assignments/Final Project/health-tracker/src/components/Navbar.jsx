@@ -29,8 +29,8 @@ function Navbar({ isAuthenticated, onLogout }) {
             <Link to="/nutrition-diary" style={styles.link}>
               Nutrition Diary
             </Link>
-            <Link to="/exercise-tracker" style={styles.link}>
-              Exercise Tracker
+            <Link to="/exercise-log" style={styles.link}>
+              Exercise Log
             </Link>
             <Link to="/water-tracker" style={styles.link}>
               Water Tracker
