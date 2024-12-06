@@ -23,7 +23,6 @@ function Profile({ userData, clearUserData }) {
 
   return (
     <div className="container">
-      <Navbar />
       <h1>{userData.name}'s Profile</h1>
       {userData.email && (
         <p>
